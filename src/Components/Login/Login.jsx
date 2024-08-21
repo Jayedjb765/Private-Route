@@ -3,7 +3,17 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const Login = () => {
-    const {signinuser} = useContext(AuthContext);
+    const {signinuser,signwithpop} = useContext(AuthContext);
+    const hadelgoogle = () =>{
+        signwithpop()
+        .then(result=>{
+            console.log(result.user);
+        })
+        .catch(error =>{
+            console.log(error.message);
+        })
+
+    }
     const handelogin  =  e =>{
         e.preventDefault();
         const email =  e.target.email.value;
@@ -64,6 +74,7 @@ const Login = () => {
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
+          <button onClick={hadelgoogle} className="bg-green-400 btn-primary px-2 rounded-lg">Login with google</button>
         </div>
       </div>
     </div>

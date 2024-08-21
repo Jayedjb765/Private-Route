@@ -17,7 +17,9 @@ const Nav = () => {
     <li><NavLink to="/">Home</NavLink></li>
     <li><NavLink to="/log">Login</NavLink></li>
     <li><NavLink to="/reg">Registration</NavLink></li>
-    <li><NavLink to="/food">Food</NavLink></li>
+    {
+        user && <li><NavLink to="/food">Food</NavLink></li>
+    }
     </>
     return (
         <div className="navbar bg-base-100">
