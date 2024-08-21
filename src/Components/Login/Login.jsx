@@ -1,12 +1,24 @@
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const Login = () => {
+    const {signinuser} = useContext(AuthContext);
     const handelogin  =  e =>{
-        e.preventDeafult();
+        e.preventDefault();
         const email =  e.target.email.value;
         const password =  e.target.password.value;
+        signinuser(email,password)
+        .then(result=>{
+            console.log(result.user);
+        })
+        .catch(error =>{
+            console.log(error.message);
+        })
+        
 
     }
+    
     return (
         <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col ">
@@ -48,6 +60,7 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
+                
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
